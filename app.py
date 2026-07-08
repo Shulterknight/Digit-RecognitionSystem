@@ -30,9 +30,12 @@ if uploaded_file is not None:
     st.image(image, caption='Uploaded Image', width=200)
     st.write("Classifying...")
 
-    # 3. Preprocess the image to match MNIST format
+# 3. Preprocess the image to match MNIST format
     # Convert to grayscale
     image = ImageOps.grayscale(image)
+    
+    # ADD THIS LINE: Invert the image colors (makes white background black, and black text white)
+    image = ImageOps.invert(image)
     
     # Resize to 28x28
     image = image.resize((28, 28))
